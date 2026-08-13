@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<rect width="900" height="560" rx="36" fill="#07111a"/>
+<rect x="40" y="40" width="820" height="480" rx="24" fill="none" stroke="#14e8c4" stroke-opacity="0.85" stroke-width="2"/>
+<rect x="88" y="108" width="210" height="300" rx="18" fill="#112b30" stroke="#14e8c4" stroke-opacity="0.8"/>
+<rect x="332" y="108" width="210" height="300" rx="18" fill="#193030" stroke="#00c2ff" stroke-opacity="0.8"/>
+<rect x="576" y="108" width="210" height="300" rx="18" fill="#25322d" stroke="#8b5cf6" stroke-opacity="0.8"/>
+<path d="M120 168H250M120 220H225M120 272H245M120 324H212" stroke="#fff" stroke-opacity="0.85" stroke-width="3" stroke-linecap="round"/>
+<circle cx="420" cy="184" r="38" fill="#14e8c4" opacity="0.65"/>
+<circle cx="650" cy="216" r="52" fill="#00c2ff" opacity="0.45"/>
+<text x="88" y="444" fill="#ffffff" font-size="30" font-family="Arial" font-weight="700">DriveNest</text>
+</svg>

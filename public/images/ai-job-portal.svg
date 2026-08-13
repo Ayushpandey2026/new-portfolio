@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111b"/>
+      <stop offset="1" stop-color="#172239"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00c2ff"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="560" rx="36" fill="url(#bg)"/>
+  <circle cx="95" cy="85" r="4" fill="#fff" opacity="0.9"/>
+  <circle cx="780" cy="88" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="130" cy="470" r="2" fill="#fff" opacity="0.8"/>
+  <rect x="56" y="64" width="780" height="432" rx="20" fill="none" stroke="url(#accent)" stroke-opacity="0.75" stroke-width="2"/>
+  <rect x="96" y="112" width="300" height="160" rx="10" fill="#12202c" stroke="#00c2ff" stroke-opacity="0.55"/>
+  <rect x="458" y="112" width="300" height="96" rx="10" fill="#19233a" stroke="#8b5cf6" stroke-opacity="0.65"/>
+  <rect x="458" y="236" width="300" height="200" rx="10" fill="#182839" stroke="#00c2ff" stroke-opacity="0.65"/>
+  <rect x="118" y="132" width="142" height="12" rx="6" fill="#00c2ff" opacity="0.9"/>
+  <rect x="118" y="158" width="182" height="12" rx="6" fill="#9fb2bd" opacity="0.8"/>
+  <rect x="118" y="184" width="104" height="12" rx="6" fill="#9fb2bd" opacity="0.75"/>
+  <rect x="500" y="136" width="150" height="12" rx="6" fill="#fff" opacity="0.85"/>
+  <rect x="500" y="282" width="130" height="12" rx="6" fill="#00c2ff" opacity="0.85"/>
+  <rect x="500" y="314" width="188" height="12" rx="6" fill="#fff" opacity="0.75"/>
+  <rect x="500" y="346" width="150" height="12" rx="6" fill="#fff" opacity="0.68"/>
+  <text x="96" y="416" fill="#eeeeee" font-size="30" font-family="Arial" font-weight="700">AI Job Portal</text>
+</svg>

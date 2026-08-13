@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<rect width="900" height="560" rx="36" fill="#071121"/>
+<rect x="40" y="40" width="820" height="480" rx="24" fill="none" stroke="#a855f7" stroke-opacity="0.88" stroke-width="2"/>
+<circle cx="450" cy="252" r="158" fill="none" stroke="#00c2ff" stroke-width="2" stroke-dasharray="4 4"/>
+<path d="M230 328C260 180 382 150 448 208C515 162 662 194 680 322" fill="none" stroke="#a855f7" stroke-width="4" stroke-linecap="round"/>
+<rect x="176" y="196" width="150" height="80" rx="12" fill="#1c2030" stroke="#fff" stroke-opacity="0.5"/>
+<rect x="574" y="196" width="150" height="80" rx="12" fill="#1c2030" stroke="#fff" stroke-opacity="0.5"/>
+<text x="210" y="456" fill="#ffffff" font-size="28" font-family="Arial" font-weight="700">AI Counsellor</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#100b1d"/>
+      <stop offset="1" stop-color="#182b25"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="560" rx="36" fill="url(#bg)"/>
+  <rect x="50" y="50" width="800" height="460" rx="20" fill="none" stroke="#a855f7" stroke-opacity="0.8" stroke-width="2"/>
+  <rect x="90" y="105" width="220" height="280" rx="14" fill="#211b34" stroke="#a855f7" stroke-opacity="0.75"/>
+  <rect x="340" y="105" width="220" height="280" rx="14" fill="#1c3330" stroke="#14e8c4" stroke-opacity="0.75"/>
+  <rect x="590" y="105" width="220" height="280" rx="14" fill="#312119" stroke="#ff7a45" stroke-opacity="0.8"/>
+  <rect x="116" y="134" width="126" height="12" rx="6" fill="#fff" opacity="0.9"/>
+  <rect x="116" y="170" width="142" height="108" rx="8" fill="#a855f7" opacity="0.65"/>
+  <rect x="366" y="134" width="130" height="14" rx="7" fill="#fff" opacity="0.9"/>
+  <rect x="366" y="180" width="162" height="96" rx="8" fill="#14e8c4" opacity="0.55"/>
+  <rect x="616" y="134" width="115" height="12" rx="6" fill="#fff" opacity="0.9"/>
+  <rect x="616" y="176" width="146" height="108" rx="8" fill="#ff7a45" opacity="0.55"/>
+  <text x="90" y="444" fill="#ffffff" font-size="30" font-family="Arial" font-weight="700">ECommerce Platform</text>
+</svg>
