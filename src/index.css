@@ -57,7 +57,7 @@ body{
   position: absolute;
   inset: -12%;
   background: radial-gradient(circle, transparent 50%, rgba(0,194,255,0.16) 78%, transparent 100%);
-  filter: blur(50px);
+  filter: blur(10px);
   opacity: 0.78;
 }
 
@@ -71,7 +71,7 @@ body{
   mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, black 40%, transparent 100%);
 }
 .bg-glow{
-  position:fixed; z-index:0; pointer-events:none; border-radius:9999px; filter:blur(120px);
+  position:fixed; z-index:0; pointer-events:none; border-radius:9999px; filter:blur(80px);
   opacity:0.35; transition:background 0.6s ease; background:var(--accent);
 }
 
@@ -83,8 +83,8 @@ body{
 /* glass panel */
 .glass{
   background:var(--panel);
-  backdrop-filter:blur(16px) saturate(140%);
-  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  backdrop-filter:blur(10px) saturate(120%);
+  -webkit-backdrop-filter:blur(10px) saturate(120%);
   border:1px solid var(--line);
 }
 .glow-border{
@@ -93,7 +93,7 @@ body{
 }
 .glow-border:hover{
   border-color:var(--accent);
-  box-shadow:0 0 0 1px var(--accent), 0 0 32px -4px var(--accent-glow), 0 12px 40px -12px rgba(0,0,0,0.6);
+  box-shadow:0 0 0 1px var(--accent), 0 0 18px -6px var(--accent-glow);
   transform:translateY(-3px);
 }
 .accent-text{ color:var(--accent); }
@@ -134,7 +134,7 @@ body{
 .pulse-dot{ animation:pulse-ring 2.2s cubic-bezier(.4,0,.6,1) infinite; }
 
 .magnetic-btn{ transition:transform 0.25s ease, box-shadow 0.25s ease; }
-.magnetic-btn:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 0 40px -6px var(--accent-glow); }
+.magnetic-btn:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 0 18px -6px var(--accent-glow); }
 
 .profile-photo-shell {
   border-radius: 1.75rem;
@@ -182,10 +182,10 @@ body{
 .nav-link:hover::after{ width:100%; }
 
 .skill-chip{ transition:all 0.3s ease; border:1px solid var(--line); }
-.skill-chip:hover{ border-color:var(--accent); box-shadow:0 0 20px -4px var(--accent-glow); transform:translateY(-2px); }
+.skill-chip:hover{ border-color:var(--accent); box-shadow:0 0 12px -4px var(--accent-glow); transform:translateY(-2px); }
 
 .timeline-line{ background:linear-gradient(to bottom, var(--accent), transparent 95%); }
-.timeline-dot{ box-shadow:0 0 0 4px var(--void), 0 0 16px 2px var(--accent-glow); }
+.timeline-dot{ box-shadow:0 0 0 4px var(--void), 0 0 12px 2px var(--accent-glow); }
 
 input.float-input, textarea.float-input{
   background:transparent; border:1px solid var(--line); color:var(--text);

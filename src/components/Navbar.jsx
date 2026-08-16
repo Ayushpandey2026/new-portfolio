@@ -28,8 +28,21 @@ const Navbar = ({ theme, setTheme, active }) => {
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    window.addEventListener('scroll', onScroll)
+    let ticking = false
+
+    const updateScrolled = () => {
+      setScrolled(window.scrollY > 24)
+      ticking = false
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrolled)
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 

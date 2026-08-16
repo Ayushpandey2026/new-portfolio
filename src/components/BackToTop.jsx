@@ -4,8 +4,21 @@ import Icon from './Icon.jsx'
 const BackToTop = () => {
   const [show, setShow] = useState(false)
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 700)
-    window.addEventListener('scroll', onScroll)
+    let ticking = false
+
+    const updateShow = () => {
+      setShow(window.scrollY > 700)
+      ticking = false
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateShow)
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
