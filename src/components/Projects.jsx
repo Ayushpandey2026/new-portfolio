@@ -61,7 +61,7 @@ const Projects = () => {
         </div>
 
         {/* desktop grid */}
-        <div className="hidden md:grid grid-cols-3 gap-6">
+        <div className="hidden md:grid grid-cols-3 gap-6 items-start">
           {PROJECTS.map((p, i) => (
             <Reveal key={p.id} delay={i * 100}>
               <ProjectCard project={p} onExpand={setActive} />

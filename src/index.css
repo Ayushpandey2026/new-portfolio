@@ -37,7 +37,7 @@ body{
     radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.8px) 80% 30% / 210px 210px,
     radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1.3px) 34% 75% / 230px 230px;
   opacity: 0.90;
-  animation: starDrift 16s ease-in-out infinite alternate;
+  animation: none;
 }
 .starfield:before {
   content: '';
@@ -49,15 +49,15 @@ body{
     radial-gradient(circle, rgba(255,255,255,1) 0 1px, transparent 1px);
   background-position: 16px 18px, 130px 86px, 234px 40px;
   background-size: 250px 250px, 260px 260px, 330px 330px;
-  filter: drop-shadow(0 0 5px var(--accent-glow));
-  animation: twinkle 4.2s ease-in-out infinite alternate;
+  filter: none;
+  animation: none;
 }
 .starfield:after {
   content: '';
   position: absolute;
   inset: -12%;
   background: radial-gradient(circle, transparent 50%, rgba(0,194,255,0.16) 78%, transparent 100%);
-  filter: blur(10px);
+  filter: none;
   opacity: 0.78;
 }
 
@@ -71,7 +71,7 @@ body{
   mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, black 40%, transparent 100%);
 }
 .bg-glow{
-  position:fixed; z-index:0; pointer-events:none; border-radius:9999px; filter:blur(80px);
+  position:fixed; z-index:0; pointer-events:none; border-radius:9999px; filter:none;
   opacity:0.35; transition:background 0.6s ease; background:var(--accent);
 }
 
@@ -82,14 +82,14 @@ body{
 
 /* glass panel */
 .glass{
-  background:var(--panel);
-  backdrop-filter:blur(10px) saturate(120%);
-  -webkit-backdrop-filter:blur(10px) saturate(120%);
+  background:rgba(15, 23, 42, 0.92);
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
   border:1px solid var(--line);
 }
 .glow-border{
   position:relative;
-  transition:box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+  transition:border-color 0.4s ease, transform 0.4s ease;
 }
 .glow-border:hover{
   border-color:var(--accent);
@@ -123,15 +123,15 @@ body{
 }
 
 @keyframes floaty{ 0%,100%{ transform:translateY(0px) rotate(0deg);} 50%{ transform:translateY(-14px) rotate(1.5deg);} }
-.float{ animation:floaty 6s ease-in-out infinite; }
+.float{ animation:none !important; }
 
 @keyframes spin-slow{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
-.spin-slow{ animation:spin-slow 14s linear infinite; }
+.spin-slow{ animation:none !important; }
 @keyframes spin-slow-rev{ from{transform:rotate(360deg);} to{transform:rotate(0deg);} }
-.spin-slow-rev{ animation:spin-slow-rev 20s linear infinite; }
+.spin-slow-rev{ animation:none !important; }
 
 @keyframes pulse-ring{ 0%{ box-shadow:0 0 0 0 var(--accent-soft);} 70%{ box-shadow:0 0 0 14px rgba(0,0,0,0);} 100%{ box-shadow:0 0 0 0 rgba(0,0,0,0);} }
-.pulse-dot{ animation:pulse-ring 2.2s cubic-bezier(.4,0,.6,1) infinite; }
+.pulse-dot{ animation:none !important; }
 
 .magnetic-btn{ transition:transform 0.25s ease, box-shadow 0.25s ease; }
 .magnetic-btn:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 0 18px -6px var(--accent-glow); }
@@ -210,7 +210,7 @@ body{
   transform:translate(-50%, -50%);
   border-radius:9999px;
   background:var(--accent);
-  box-shadow:0 0 0 4px var(--void), 0 0 12px 2px var(--accent-glow);
+  box-shadow:0 0 0 4px var(--void);
   z-index:2;
 }
 .timeline-card{
@@ -273,7 +273,44 @@ input.float-input:focus, textarea.float-input:focus{
 .scrollbar-hide::-webkit-scrollbar{ display:none; }
 .scrollbar-hide{ -ms-overflow-style:none; scrollbar-width:none; }
 
-.modal-backdrop{ backdrop-filter:blur(6px); background:rgba(3,4,8,0.75); }
+.modal-backdrop{ backdrop-filter:none; background:rgba(3,4,8,0.8); }
+
+.project-card {
+  height:auto;
+  min-height:0;
+  align-self:start;
+  transition:transform 0.25s ease, border-color 0.25s ease;
+}
+.project-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 0 1px var(--accent), 0 0 18px -6px var(--accent-glow);
+}
+.project-card--expanded {
+  box-shadow:none;
+}
+.project-preview {
+  display:block;
+}
+.project-preview-text {
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  line-height:1.65;
+}
+.project-details {
+  display:none;
+}
+.project-card--expanded .project-details {
+  display:block;
+  margin-top:0.25rem;
+}
+.project-card--expanded .project-preview {
+  display:none;
+}
+.project-toggle {
+  box-shadow:none;
+}
 
 .num-badge{ font-variant-numeric:tabular-nums; }
 
