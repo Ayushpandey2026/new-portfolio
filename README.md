@@ -55,13 +55,5 @@ npm run build      # outputs to dist/
 npm run preview    # preview the production build locally
 ```
 
-Deploy the contents of `dist/` to GitHub Pages, Vercel, or Netlify.
 
-## Customizing
 
-- **Content** (name, projects, skills, timeline, links): edit `src/data/content.js` only —
-  every component reads from there.
-- **Colors / accent themes**: edit the `THEMES` object in `src/data/content.js`.
-- **Global styles / animations**: `src/index.css`.
-- **Resume file**: replace `public/Ayush_Pandey_Resume.pdf` (keep the same filename, or update
-  `PROFILE.resumeUrl` in `src/data/content.js`).
