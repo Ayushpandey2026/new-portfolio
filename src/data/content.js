@@ -228,6 +228,6 @@ export const PROFILE = {
   linkedin: 'https://www.linkedin.com/in/ayushp2007/',
   github: 'https://github.com/Ayushpandey2026',
   location: 'Lucknow, India',
-  resumeUrl: '/Ayush_FullStack_Developer_Resume.pdf',
+  resumeUrl: 'https://drive.google.com/file/d/1FAOkIoepacZTs9NcVYSk4IK_JWQQnmgl/view?usp=sharing',
   photo: '/images/Formal Corporate Portrait in Charcoal Suit.png' || '/images/ayush-profile.svg',
 };
