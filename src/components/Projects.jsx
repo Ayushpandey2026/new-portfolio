@@ -10,6 +10,10 @@ const Projects = () => {
   const [slide, setSlide] = useState(0)
   const trackRef = useRef(null)
 
+  const openProject = (project, mode = 'overview') => {
+    setActive({ project, mode })
+  }
+
   const goTo = (i) => {
     setSlide(i)
     const track = trackRef.current
@@ -40,7 +44,7 @@ const Projects = () => {
           >
             {PROJECTS.map((p) => (
               <div key={p.id} className="snap-start shrink-0 w-[86%]">
-                <ProjectCard project={p} onExpand={setActive} />
+                <ProjectCard project={p} onExpand={openProject} />
               </div>
             ))}
           </div>
@@ -64,13 +68,13 @@ const Projects = () => {
         <div className="hidden md:grid grid-cols-3 gap-6 items-start">
           {PROJECTS.map((p, i) => (
             <Reveal key={p.id} delay={i * 100}>
-              <ProjectCard project={p} onExpand={setActive} />
+              <ProjectCard project={p} onExpand={openProject} />
             </Reveal>
           ))}
         </div>
       </div>
 
-      {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
+      {active && <ProjectModal project={active.project} initialMode={active.mode} onClose={() => setActive(null)} />}
     </section>
   )
 }

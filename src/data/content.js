@@ -23,6 +23,45 @@ export const SKILL_GROUPS = [
 ];
 
 export const PROJECTS = [
+  
+{
+  id: 'shoplink',
+  name: 'ShopLink',
+  period: '2026',
+  tagline: 'Hyperlocal B2B marketplace for discovering and exchanging excess inventory.',
+  stack: [
+    'React.js',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'Tailwind CSS',
+    'JWT',
+    'Leaflet',
+    'Socket.IO',
+    'Razorpay'
+  ],
+  image: '/images/Gemini_Generated_Image_8py4eh8py4eh8py4.png',
+  imageAlt: 'ShopLink hyperlocal inventory marketplace preview',
+  problem: 'Local retailers and small businesses often struggle to discover nearby suppliers with excess or dead stock, leading to unsold inventory, wasted resources, and missed business opportunities.',
+  solution: 'Developed a hyperlocal B2B marketplace that enables neighborhood retailers to list excess inventory, discover available stock at nearby shops through an interactive map, and manage orders through a centralized platform.',
+  impact: [
+    'Simplifies local inventory discovery for neighborhood retailers',
+    'Enables shop-level stock discovery using an interactive Leaflet map',
+    'Streamlines inventory listings, order management, and delivery tracking',
+    'Implements JWT-based authentication and role-based access control'
+  ],
+  architecture: [
+    'React frontend communicates with Node.js and Express REST APIs',
+    'MongoDB stores shop profiles, inventory listings, and order data',
+    'Leaflet and OpenStreetMap enable location-based inventory discovery',
+    'JWT authentication protects user sessions and role-specific operations',
+    'Order workflows support status tracking and OTP-based delivery verification',
+    'Razorpay integration supports payment workflows'
+  ],
+  github: 'https://github.com/Ayushpandey2026/shoplink',
+  live: 'https://ayushppp.vercel.app/',
+},
+
   {
     id:'ai-job-portal',
     name:'AI Job-Portal',
@@ -189,6 +228,6 @@ export const PROFILE = {
   linkedin: 'https://www.linkedin.com/in/ayushp2007/',
   github: 'https://github.com/Ayushpandey2026',
   location: 'Lucknow, India',
-  resumeUrl: '/Ayush_Pandey_Resume.pdf',
+  resumeUrl: '/Ayush_FullStack_Developer_Resume.pdf',
   photo: '/images/Formal Corporate Portrait in Charcoal Suit.png' || '/images/ayush-profile.svg',
 };

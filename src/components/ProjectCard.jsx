@@ -65,41 +65,52 @@ const ProjectCard = ({ project, onExpand }) => {
         </div>
       </div>
 
-      <div className="mt-auto flex items-center gap-3 pt-5">
+      <div className="mt-auto flex flex-col gap-3 pt-5">
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => {
+              setExpanded((v) => !v)
+              if (expanded === false && onExpand) onExpand(project, 'overview')
+            }}
+            className="project-toggle magnetic-btn flex-1 glass border border-white/15 font-mono text-xs font-semibold px-4 py-3 rounded-xl flex items-center justify-center gap-2"
+          >
+            <Icon name="layers" className="w-4 h-4" />
+            {expanded ? 'View Less' : 'View More'}
+          </button>
+
+          {expanded && (
+            <>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 flex items-center justify-center rounded-xl glass border border-white/15 hover:border-white/30"
+                aria-label="GitHub repo"
+              >
+                <Icon name="github" className="w-4 h-4" />
+              </a>
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 flex items-center justify-center rounded-xl glass border border-white/15 hover:border-white/30"
+                aria-label="Live demo"
+              >
+                <Icon name="external" className="w-4 h-4" />
+              </a>
+            </>
+          )}
+        </div>
+
         <button
           type="button"
-          onClick={() => {
-            setExpanded((v) => !v)
-            if (expanded === false && onExpand) onExpand(project)
-          }}
-          className="project-toggle magnetic-btn flex-1 glass border border-white/15 font-mono text-xs font-semibold px-4 py-3 rounded-xl flex items-center justify-center gap-2"
+          onClick={() => onExpand && onExpand(project, 'architecture')}
+          className="project-architecture-btn magnetic-btn glass border border-white/15 font-mono text-[11px] font-semibold px-4 py-2.5 rounded-xl flex items-center justify-center gap-2"
         >
           <Icon name="layers" className="w-4 h-4" />
-          {expanded ? 'View Less' : 'View More'}
+          View System Architecture
         </button>
-
-        {expanded && (
-          <>
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center rounded-xl glass border border-white/15 hover:border-white/30"
-              aria-label="GitHub repo"
-            >
-              <Icon name="github" className="w-4 h-4" />
-            </a>
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center rounded-xl glass border border-white/15 hover:border-white/30"
-              aria-label="Live demo"
-            >
-              <Icon name="external" className="w-4 h-4" />
-            </a>
-          </>
-        )}
       </div>
     </div>
   )
