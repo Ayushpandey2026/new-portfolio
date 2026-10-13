@@ -59,7 +59,7 @@ export const PROJECTS = [
     'Razorpay integration supports payment workflows'
   ],
   github: 'https://github.com/Ayushpandey2026/shoplink',
-  live: 'https://ayushppp.vercel.app/',
+  live: 'https://shoplinc.vercel.app/',
 },
 
   {

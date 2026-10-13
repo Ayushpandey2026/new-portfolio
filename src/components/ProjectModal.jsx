@@ -1,54 +1,23 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Icon from './Icon.jsx'
+import { ARCHITECTURE_BY_PROJECT } from '../data/architecture.js'
 
-const getNodes = (project) => {
-  const defaultNodes = [
-    {
-      id: 'client',
-      label: 'Client UI',
-      tech: 'React + Tailwind',
-      role: 'Presentation layer for product browsing, auth, and dashboard UX.',
-      tradeoff: 'Prefers a lightweight client-side SPA for fast interaction and minimal page reloads without sacrificing responsive UX.',
-      optimization: 'Component reuse and route-driven rendering keep the UI lean; state is chunked where useful for a smoother browsing flow.',
-    },
-    {
-      id: 'api',
-      label: 'API / Middleware',
-      tech: 'Node.js + Express',
-      role: 'Routes requests, validates payloads, applies auth, and orchestrates business logic.',
-      tradeoff: 'A thin API layer keeps data transformations explicit and easy to test without overloading the frontend with business rules.',
-      optimization: 'JWT checks, payload validation, and route scoping reduce unauthorized access and keep requests predictable under load.',
-    },
-    {
-      id: 'database',
-      label: 'Database / Cache',
-      tech: project?.stack?.includes('MongoDB') ? 'MongoDB + indexed queries' : 'MySQL + relational queries',
-      role: 'Stores persistent application state, user records, and queryable operational datasets.',
-      tradeoff: 'A document store was chosen where flexible schemas matter; relational models are favored where joins and consistency are critical.',
-      optimization: 'Indexes, filtered queries, and disciplined schema shapes reduce response latency and keep read-heavy workloads efficient.',
-    },
-    {
-      id: 'services',
-      label: 'External Services',
-      tech: project?.stack?.includes('Cloudinary') ? 'Cloudinary + JWT auth' : project?.stack?.includes('MongoDB') ? 'Groq / Affinda APIs' : 'Geolocation + analytics services',
-      role: 'Extends the platform with AI, media storage, or geospatial processing beyond the app core.',
-      tradeoff: 'External services decouple domain-specific processing and reduce the need to build every capability from scratch.',
-      optimization: 'Caching and scoped API calls improve resilience, while bounded integrations keep request latency and failure modes controllable.',
-    },
-  ]
-
-  return defaultNodes
-}
+const EMPTY_ARCHITECTURE = []
 
 const ProjectModal = ({ project, onClose, initialMode = 'overview' }) => {
   const [mode, setMode] = useState(initialMode)
-  const [selectedNode, setSelectedNode] = useState('client')
+  const nodes = ARCHITECTURE_BY_PROJECT[project?.id] ?? EMPTY_ARCHITECTURE
+  const [selectedNode, setSelectedNode] = useState(nodes[0]?.id ?? '')
   const [flow, setFlow] = useState([])
-  const [status, setStatus] = useState('200 OK - 75ms total')
+  const [status, setStatus] = useState('')
   const [simulating, setSimulating] = useState(false)
+  const timerRef = useRef(null)
 
   const projectData = project
-  const nodes = useMemo(() => getNodes(projectData), [projectData])
+  const totalLatencyMs = useMemo(
+    () => nodes.reduce((total, node) => total + node.latencyMs, 0),
+    [nodes]
+  )
 
   useEffect(() => {
     const onKey = (e) => {
@@ -64,37 +33,45 @@ const ProjectModal = ({ project, onClose, initialMode = 'overview' }) => {
 
   useEffect(() => {
     setMode(initialMode)
-    if (!nodes.some((node) => node.id === selectedNode)) {
-      setSelectedNode(nodes[0]?.id ?? 'client')
-    }
-  }, [initialMode, nodes, selectedNode])
+  }, [initialMode])
+
+  useEffect(() => {
+    window.clearTimeout(timerRef.current)
+    setSelectedNode(nodes[0]?.id ?? '')
+    setFlow([])
+    setSimulating(false)
+    setStatus(`Ready · ~${totalLatencyMs}ms estimated`)
+
+    return () => window.clearTimeout(timerRef.current)
+  }, [projectData?.id, nodes, totalLatencyMs])
 
   const selectedDetails = nodes.find((node) => node.id === selectedNode) || nodes[0]
 
   const runSimulation = () => {
-    if (simulating) return
+    if (simulating || nodes.length === 0) return
 
     setSimulating(true)
-    const path = ['client', 'api', 'database', 'services', 'api', 'client']
-    let index = 0
+    setFlow([])
 
-    const tick = () => {
-      setFlow(path.slice(0, index + 1))
-      index += 1
+    const traceNode = (index) => {
+      const node = nodes[index]
+      setSelectedNode(node.id)
+      setFlow((visited) => [...visited, node.id])
+      setStatus(`Processing ${node.label} · ${node.latencyMs}ms`)
 
-      if (index < path.length) {
-        window.setTimeout(tick, 210)
-        return
-      }
+      timerRef.current = window.setTimeout(() => {
+        if (index + 1 < nodes.length) {
+          traceNode(index + 1)
+          return
+        }
 
-      setStatus('200 OK - 75ms total')
-      setSimulating(false)
-      window.setTimeout(() => setFlow([]), 700)
+        setStatus(`200 OK · ${totalLatencyMs}ms estimated total`)
+        setSimulating(false)
+        timerRef.current = null
+      }, node.latencyMs)
     }
 
-    setStatus('POST /api/request')
-    setFlow(['client'])
-    window.setTimeout(tick, 180)
+    traceNode(0)
   }
 
   if (!projectData) return null
@@ -185,7 +162,7 @@ const ProjectModal = ({ project, onClose, initialMode = 'overview' }) => {
               </a>
             </div>
           </>
-        ) : (
+        ) : nodes.length > 0 && selectedDetails ? (
           <div className="architecture-visualizer-wrap">
             <div className="architecture-visualizer">
               <div className="architecture-flow">
@@ -217,7 +194,9 @@ const ProjectModal = ({ project, onClose, initialMode = 'overview' }) => {
                 </div>
 
                 <div className="architecture-panel__meta">
-                  <span className="font-mono text-[10px] uppercase tracking-widest accent-text">{selectedDetails.tech}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-widest accent-text">
+                    {selectedDetails.tech} · {selectedDetails.latencyMs}ms step / {totalLatencyMs}ms total
+                  </span>
                   <span className="arch-status">{status}</span>
                 </div>
 
@@ -240,6 +219,10 @@ const ProjectModal = ({ project, onClose, initialMode = 'overview' }) => {
               </div>
             </div>
           </div>
+        ) : (
+          <p className="text-[color:var(--text-dim)] text-sm">
+            No project-specific architecture has been configured for this project.
+          </p>
         )}
       </div>
     </div>
